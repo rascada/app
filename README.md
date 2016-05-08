@@ -7,20 +7,21 @@ modern backend
 import { Injectable } from 'angular2/core';
 import Express = require('express');
 
-import { Server, Sockets, bootstrap } from './../app';
+import { Server, Sockets, bootstrap } from 'src/app';
 
 @Injectable()
 export class App {
     port: number = 7000;
+    msg: string = 'hello world';
 
     constructor(io: Sockets, app: Express, server: Server) {
-        app.get('/', (req, res) => res.send('hello app'));
+        app.get('/', (req, res) => res.send(this.msg));
         io.on('connection', this.io.bind(this));
         server.listen(this.port);
     }
 
     io(socket) {
-        socket.emit('hello', 'world');
+        socket.emit('messsage', this.msg);
     }
 }
 
