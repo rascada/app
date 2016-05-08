@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {ReflectiveInjector} from 'angular2/core';
+import {ReflectiveInjector, provide} from 'angular2/core';
 import Express = require('express');
 
 import { Sockets } from './socket';
@@ -10,6 +10,10 @@ export {
     Mongoose,
     Sockets,
     Server,
+}
+
+export function config(useClass) {
+  return provide('config', { useClass });
 }
 
 export function bootstrap(App, ...providers) {
