@@ -1,5 +1,6 @@
 # app
-modern backend 
+backend with angular2 dependency injection
+
 ### work in progress
 
 ## example
@@ -14,9 +15,12 @@ export class App {
     port: number = 7000;
     msg: string = 'hello world';
 
+    // we tell app to inject: socket.io, express and node http server
     constructor(io: Sockets, app: Express, server: Server) {
         app.get('/', (req, res) => res.send(this.msg));
         io.on('connection', this.io.bind(this));
+
+        // server have attached express, socket.io use it as well
         server.listen(this.port);
     }
 
