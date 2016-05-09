@@ -1,14 +1,9 @@
-import {Injectable} from "angular2/core";
-import {Mongoose} from "../../mongoose";
+import {ModelInterface} from "../../models";
 
-@Injectable()
-export class Example {
-    model;
-
-    constructor(mg: Mongoose) {
-        this.model = mg.db.model('example', {
-            text: String,
-            name: String,
-        });
-    }
-}
+export const example: ModelInterface = {
+    name: 'example',
+    schema: {
+        text: String,
+        name: String,
+    },
+};
