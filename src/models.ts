@@ -10,12 +10,12 @@ export interface ModelInterface {
 export class Models {
     constructor(private mg: Mongoose) { }
 
-    add(name, schema) {
+    add(name: string, schema: Object) {
         this[name] = this.mg.db.model(name, schema);
     }
 
-    load(...models) {
-        models.forEach(model =>
+    load(...models: ModelInterface[]) {
+        models.forEach((model: ModelInterface) =>
             this.add(model.name, model.schema)
         );
     }
