@@ -8,7 +8,7 @@
   },
 
   "files": [
-    "src/app.ts",
-    "src/example/example.ts"
+    "app.ts",
+    "example/example.ts"
   ]
 }
